@@ -1,0 +1,2391 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    Prabhat Jha | ETRM Consultant — Energy Trading &amp; Risk Management
+  </title>
+  <meta name="description"
+    content="Prabhat Jha — ETRM/CTRM Functional Consultant with hands-on experience in Energy Trading &amp; Risk Management. Specialising in Trade Lifecycle, P&amp;L, Settlements, Risk and Reporting across Power, Gas and Renewables." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-off: #faf9f6;
+      --bg-dark: #f4f2ed;
+      --text: #1a1a1a;
+      --muted: #5a5a5a;
+      --lighter: #8a8a8a;
+      --emerald: #0d5c3a;
+      --emerald-lt: #1a7a50;
+      --gold: #c9a84c;
+      --gold-lt: #e0bf6e;
+      --border: #eaeaea;
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Playfair Display", serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* Custom Cursor */
+    .cursor-dot,
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--emerald);
+    }
+
+    .cursor-ring {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--gold);
+      transition:
+        width 0.25s,
+        height 0.25s,
+        background-color 0.25s;
+    }
+
+    .cursor-ring.hovered {
+      width: 56px;
+      height: 56px;
+      background: rgba(201, 168, 76, 0.08);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.8rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: all 0.35s ease;
+    }
+
+    nav.scrolled {
+      padding: 1.1rem 6%;
+      border-bottom-color: var(--border);
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--emerald);
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 500;
+      position: relative;
+      color: var(--muted);
+      transition: color 0.25s;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.55rem 1.4rem;
+      border: 1px solid var(--emerald);
+      color: var(--emerald) !important;
+      border-radius: 3px;
+      font-weight: 500 !important;
+      transition:
+        background 0.25s,
+        color 0.25s !important;
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--emerald);
+      color: #fff !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1005;
+    }
+
+    .nav-toggle span {
+      width: 26px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .nav-toggle.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+      background: var(--emerald);
+    }
+
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+      background: var(--emerald);
+    }
+
+    .mobile-close-btn {
+      display: none;
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 2.2rem;
+      line-height: 1;
+      background: none;
+      border: none;
+      color: var(--emerald);
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1002;
+      transition:
+        color 0.25s,
+        transform 0.25s;
+    }
+
+    .mobile-close-btn:hover {
+      color: var(--gold);
+      transform: scale(1.1);
+    }
+
+    /* Sections */
+    section {
+      padding: 9rem 8% 6rem;
+      position: relative;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-family: "Inter", sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--emerald);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .section-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin-top: 1rem;
+      border-radius: 2px;
+    }
+
+    .section-num {
+      font-family: "Playfair Display", serif;
+      font-size: 9rem;
+      color: var(--bg-dark);
+      position: absolute;
+      top: 5rem;
+      left: 5%;
+      z-index: 0;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2.2rem;
+      border: 1.5px solid;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 500;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: color 0.3s;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      z-index: -1;
+      transition: width 0.35s ease;
+    }
+
+    .btn:hover {
+      color: #fff;
+    }
+
+    .btn:hover::before {
+      width: 100%;
+    }
+
+    .btn-primary {
+      border-color: var(--emerald);
+      color: var(--emerald);
+    }
+
+    .btn-primary::before {
+      background: var(--emerald);
+    }
+
+    .btn-gold {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-gold::before {
+      background: var(--gold);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg-off) 0%, var(--bg) 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 7rem;
+      padding-bottom: 4rem;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    /* left text col */
+    .hero-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-kicker {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-name {
+      font-size: clamp(3rem, 5.5vw, 6rem);
+      line-height: 1.05;
+      color: var(--emerald);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+      font-family: "Playfair Display", serif;
+    }
+
+    .hero-name em {
+      font-family: "IBM Plex Serif", serif;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .hero-role {
+      font-family: "Inter", sans-serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-tag {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--muted);
+      font-family: "Inter", sans-serif;
+      transition:
+        border-color 0.25s,
+        color 0.25s;
+    }
+
+    .hero-tag:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* right photo col */
+    .hero-photo-col {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      /* Bleed flush to right edge of section by cancelling the section's right padding */
+      margin-right: calc(-8%);
+      min-height: 100%;
+    }
+
+    .hero-photo-frame {
+      position: relative;
+      width: 100%;
+      /* mask: tight left-edge fade from 0% reaching full opacity by 10% */
+      /* -webkit-mask-image: linear-gradient( */
+      /*   to right, */
+      /*   transparent 0%, */
+      /*   rgba(0, 0, 0, 0.4) 4%, */
+      /*   black 10% */
+      /* ); */
+      /* mask-image: linear-gradient( */
+      /*   to right, */
+      /*   transparent 0%, */
+      /*   rgba(0, 0, 0, 0.4) 4%, */
+      /*   black 10% */
+      /* ); */
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      min-height: 70vh;
+      display: block;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(8%);
+      transition: filter 0.4s;
+    }
+
+    .hero-photo-frame:hover .hero-photo {
+      filter: grayscale(0%);
+    }
+
+    /* hero responsive */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .hero-photo-col {
+        margin-right: 0;
+        margin-left: calc(-6%);
+        margin-right: calc(-6%);
+        min-height: auto;
+        order: -1;
+      }
+
+      /* .hero-photo-frame { */
+      /*   -webkit-mask-image: linear-gradient( */
+      /*     to bottom, */
+      /*     black 82%, */
+      /*     transparent 100% */
+      /*   ); */
+      /*   mask-image: linear-gradient(to bottom, black 82%, transparent 100%); */
+      /* } */
+      .hero-photo {
+        min-height: 55vw;
+        max-height: 340px;
+      }
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 8%;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--lighter);
+      animation: scrollBob 2.5s ease-in-out infinite;
+    }
+
+    .hero-scroll i {
+      color: var(--gold);
+    }
+
+    @keyframes scrollBob {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+    /* hero responsive */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .hero-photo-col {
+        order: -1;
+        justify-content: center;
+      }
+
+      .hero-photo-frame {
+        max-width: 280px;
+      }
+    }
+
+    /* About */
+    .about {
+      background: var(--bg);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: 1.4rem;
+    }
+
+    .about-highlight {
+      padding: 0 0.3rem;
+      background: linear-gradient(to right,
+          rgba(201, 168, 76, 0.12),
+          rgba(201, 168, 76, 0.12));
+      border-bottom: 1.5px solid var(--gold);
+    }
+
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .stat-card {
+      padding: 2rem 1.8rem;
+      background: var(--bg-off);
+      border-left: 3px solid var(--gold);
+      transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-num {
+      font-family: "Playfair Display", serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--emerald);
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--lighter);
+    }
+
+    .philosophy-box {
+      margin-top: 2.5rem;
+      padding: 2rem 2.5rem;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--emerald);
+      background: var(--bg-off);
+    }
+
+    .philosophy-box h4 {
+      color: var(--emerald);
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .philosophy-box p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* Expertise */
+    .expertise {
+      background: var(--bg-off);
+    }
+
+    .expertise-intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.75;
+      margin-bottom: 3.5rem;
+    }
+
+    .lifecycle-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .flow-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--emerald);
+      padding: 0.4rem 1rem;
+      margin-bottom: 1px;
+      display: inline-block;
+    }
+
+    .flow-label.gold {
+      background: var(--gold);
+    }
+
+    .flow-card {
+      background: var(--bg);
+      padding: 1.8rem;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--emerald);
+      height: 100%;
+      transition:
+        box-shadow 0.3s,
+        transform 0.3s;
+    }
+
+    .flow-card.gold-top {
+      border-top-color: var(--gold);
+    }
+
+    .flow-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .flow-card h4 {
+      color: var(--emerald);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .flow-card.gold-top h4 {
+      color: var(--gold);
+    }
+
+    .flow-card ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .flow-card li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .flow-card li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.75rem;
+    }
+
+    .expertise-areas {
+      margin-top: 1rem;
+    }
+
+    .expertise-areas h3 {
+      font-size: 1.6rem;
+      color: var(--emerald);
+      margin-bottom: 2rem;
+    }
+
+    .accordion {
+      border: 1px solid var(--border);
+    }
+
+    .acc-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .acc-item:last-child {
+      border-bottom: none;
+    }
+
+    .acc-trigger {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 2rem;
+      background: none;
+      border: none;
+      cursor: none;
+      text-align: left;
+      transition: background 0.25s;
+    }
+
+    .acc-trigger:hover {
+      background: var(--bg);
+    }
+
+    .acc-trigger h4 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      color: var(--emerald);
+      flex: 1;
+      margin-left: 0.8rem;
+    }
+
+    .acc-trigger .acc-num {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+    }
+
+    .acc-trigger .acc-icon {
+      color: var(--gold);
+      font-size: 0.9rem;
+      transition: transform 0.3s;
+    }
+
+    .acc-trigger.open .acc-icon {
+      transform: rotate(45deg);
+    }
+
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 2rem;
+    }
+
+    .acc-body.open {
+      max-height: 600px;
+    }
+
+    .acc-body-inner {
+      padding: 1.2rem 0 2rem;
+    }
+
+    .acc-body-inner p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .acc-body-inner ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 0.8rem;
+    }
+
+    .acc-body-inner li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .acc-body-inner li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    /* Experience */
+    .experience {
+      background: var(--bg);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 860px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      width: 1px;
+      background: var(--border);
+      top: 0;
+      bottom: 0;
+      left: 22px;
+    }
+
+    .tl-item {
+      position: relative;
+      padding-left: 68px;
+      margin-bottom: 4.5rem;
+    }
+
+    .tl-dot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      left: 16px;
+      top: 8px;
+      box-shadow: 0 0 0 5px rgba(201, 168, 76, 0.18);
+    }
+
+    .tl-card {
+      background: var(--bg-off);
+      padding: 2.8rem;
+      box-shadow: var(--shadow-sm);
+      border-left: 3px solid transparent;
+      transition:
+        border-color 0.3s,
+        box-shadow 0.3s,
+        transform 0.3s;
+    }
+
+    @media(max-width: 576px) {
+      .tl-card {
+        padding: 0.8rem;
+      }
+    }
+
+    .tl-card:hover {
+      border-left-color: var(--gold);
+      box-shadow: var(--shadow-md);
+      transform: translateX(6px);
+    }
+
+    .tl-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tl-date {
+      font-size: 0.82rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .tl-location {
+      font-size: 0.8rem;
+      color: var(--lighter);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .tl-role {
+      font-size: 1.5rem;
+      color: var(--emerald);
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+    }
+
+    .tl-company {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 600;
+      font-family: "Inter", sans-serif;
+      margin-bottom: 1.6rem;
+    }
+
+    .tl-bullets li {
+      font-size: 0.93rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      padding-left: 1.4rem;
+      position: relative;
+      line-height: 1.65;
+    }
+
+    .tl-bullets li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.85rem;
+    }
+
+    .tl-bullets li strong {
+      color: var(--text);
+    }
+
+    /* Skills */
+    .skills-sec {
+      background: var(--bg-off);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-group h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .chip {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      transition: all 0.25s;
+    }
+
+    .chip:hover {
+      background: var(--emerald);
+      color: #fff;
+      border-color: var(--emerald);
+    }
+
+    .chip.primary {
+      background: var(--emerald);
+      color: #fff;
+      border-color: var(--emerald);
+    }
+
+    /* ETRM App Cards */
+    .etrm-apps-section {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .etrm-apps-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+      display: block;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .etrm-app-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .etrm-app-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1.6rem 1.2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      transition:
+        border-color 0.3s,
+        box-shadow 0.3s,
+        transform 0.3s;
+      cursor: default;
+    }
+
+    .etrm-app-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+    }
+
+    .etrm-app-logo {
+      width: 100%;
+      max-height: 52px;
+      object-fit: contain;
+      object-position: center;
+      filter: grayscale(30%);
+      transition: filter 0.3s;
+    }
+
+    .etrm-app-card:hover .etrm-app-logo {
+      filter: grayscale(0%);
+    }
+
+    .etrm-app-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-align: center;
+      font-family: "Inter", sans-serif;
+      letter-spacing: 0.3px;
+      transition: color 0.3s;
+    }
+
+    .etrm-app-card:hover .etrm-app-name {
+      color: var(--emerald);
+    }
+
+    /* Tools pill strip */
+    .tool-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .tool-strip-label {
+      width: 100%;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .tech-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text);
+      border-radius: 4px;
+      transition:
+        border-color 0.25s,
+        color 0.25s;
+    }
+
+    .tech-pill i {
+      color: var(--gold);
+    }
+
+    .tech-pill:hover {
+      border-color: var(--emerald);
+      color: var(--emerald);
+    }
+
+    @media (max-width: 900px) {
+      .etrm-app-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .tl-item {
+        position: relative;
+        padding-left: 40px;
+        margin-bottom: 4.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .etrm-app-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Education */
+    .edu-sec {
+      background: var(--bg);
+    }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+
+    .edu-col-title {
+      font-size: 1.6rem;
+      color: var(--emerald);
+      margin-bottom: 2rem;
+    }
+
+    .edu-item,
+    .cert-item {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .edu-item:last-child,
+    .cert-item:last-child {
+      border-bottom: none;
+    }
+
+    .edu-degree {
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .edu-inst {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .edu-year {
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .cert-name {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 500;
+      font-family: "Inter", sans-serif;
+    }
+
+    .cert-by {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .cert-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.6rem;
+      background: rgba(201, 168, 76, 0.1);
+      color: var(--gold);
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      align-self: flex-start;
+    }
+
+    /* Open To */
+    .open-to {
+      background: var(--emerald);
+      color: #fff;
+      text-align: center;
+      padding: 6rem 8%;
+    }
+
+    .open-to .section-title {
+      color: #fff;
+    }
+
+    .open-to .section-divider {
+      background: var(--gold);
+      margin: 1rem auto 2.5rem;
+    }
+
+    .open-to p {
+      font-family: "Inter", sans-serif;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 560px;
+      margin: 0 auto 3rem;
+      line-height: 1.75;
+    }
+
+    .roles-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .role-pill {
+      padding: 0.7rem 1.6rem;
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-family: "Inter", sans-serif;
+      transition:
+        border-color 0.25s,
+        color 0.25s;
+    }
+
+    .role-pill:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .geo-list {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .geo-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .geo-item i {
+      color: var(--gold);
+      font-size: 1.4rem;
+    }
+
+    .geo-item span {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 1px;
+    }
+
+    /* Contact */
+    .contact {
+      background: var(--bg-off);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-text p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.4rem 1.8rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      transition:
+        border-color 0.3s,
+        box-shadow 0.3s,
+        transform 0.3s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(6px);
+    }
+
+    .contact-link-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-off);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--emerald);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    .contact-link-info small {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--lighter);
+      margin-bottom: 0.15rem;
+    }
+
+    .contact-link-info span {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2rem 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      color: var(--lighter);
+    }
+
+    footer a {
+      color: var(--gold);
+    }
+
+    /* Scroll top */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      background: var(--gold);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.35s;
+      z-index: 999;
+      box-shadow: var(--shadow-md);
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: var(--emerald);
+      transform: translateY(-4px);
+    }
+
+    /* Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    }
+
+    .fade-left {
+      opacity: 0;
+      transform: translateX(-24px);
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    }
+
+    .fade-up.visible,
+    .fade-left.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .d1 {
+      transition-delay: 0.1s;
+    }
+
+    .d2 {
+      transition-delay: 0.2s;
+    }
+
+    .d3 {
+      transition-delay: 0.3s;
+    }
+
+    .d4 {
+      transition-delay: 0.4s;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+
+      .about-grid,
+      .edu-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .lifecycle-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      section {
+        padding: 7rem 6% 5rem;
+      }
+
+      .section-num {
+        font-size: 6rem;
+      }
+    }
+
+    @media (max-width: 680px) {
+      nav {
+        padding: 1.2rem 5%;
+      }
+
+      nav.scrolled {
+        padding: 0.9rem 5%;
+      }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1rem;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .mobile-close-btn {
+        display: block;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .acc-body-inner ul {
+        grid-template-columns: 1fr;
+      }
+
+      .geo-list {
+        gap: 1.5rem;
+      }
+
+      .cursor-dot,
+      .cursor-ring {
+        display: none;
+      }
+
+      body {
+        cursor: auto;
+      }
+
+      .acc-trigger {
+        cursor: pointer;
+      }
+
+      .scroll-top {
+        cursor: pointer;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav id="navbar">
+    <a href="#hero" class="logo">PJ<span>.</span></a>
+    <div class="nav-links" id="navLinks">
+      <!-- <button -->
+      <!--   class="mobile-close-btn" -->
+      <!--   id="mobileCloseBtn" -->
+      <!--   aria-label="Close menu" -->
+      <!-- > -->
+      <!--   &times; -->
+      <!-- </button> -->
+      <a href="#about">About</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+    <div class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="section-inner hero-inner">
+      <!-- Left: text -->
+      <div class="hero-text">
+        <div class="hero-kicker fade-up">ETRM Functional Consultant</div>
+        <h1 class="hero-name fade-up d1">Prabhat Jha</h1>
+        <p class="hero-role fade-up d2">
+          Energy Trading &amp; Risk Management
+        </p>
+        <div class="hero-tags fade-up d2">
+          <span class="hero-tag">Power</span>
+          <span class="hero-tag">Gas</span>
+          <span class="hero-tag">Renewables</span>
+          <span class="hero-tag">Trade Lifecycle</span>
+          <span class="hero-tag">P&amp;L</span>
+          <span class="hero-tag">Risk</span>
+          <span class="hero-tag">Settlements</span>
+          <span class="hero-tag">Reporting</span>
+          <span class="hero-tag">SQL</span>
+        </div>
+        <p class="hero-desc fade-up d3">
+          ETRM Functional Consultant with hands-on experience across the
+          energy trading lifecycle — from trade capture and market submissions
+          to valuation, settlements, reconciliation, P&amp;L and reporting.
+          Working at the intersection of energy markets, trading operations,
+          ETRM platforms and data.
+        </p>
+        <div class="hero-actions fade-up d4">
+          <a href="#contact" class="btn btn-primary">Get In Touch</a>
+          <a href="#experience" class="btn btn-gold">View Experience</a>
+        </div>
+      </div>
+      <!-- Right: profile photo -->
+      <div class="hero-photo-col">
+        <div class="hero-photo-frame">
+          <img src="assets/profile.png" alt="Prabhat Jha" class="hero-photo" />
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <i class="fas fa-arrow-down"></i>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <span class="section-num">01</span>
+    <div class="section-inner">
+      <div class="section-tag fade-up">About Me</div>
+      <h2 class="section-title fade-up d1">
+        An ETRM Consultant Who Understands<br />the Business First
+      </h2>
+      <div class="section-divider fade-up d2" style="margin-bottom: 3.5rem"></div>
+      <div class="about-grid">
+        <div class="about-text fade-left">
+          <p>
+            I'm an
+            <span class="about-highlight">ETRM Functional Consultant</span>
+            with experience spanning the full energy trading lifecycle — from
+            Front Office trade capture and market submissions through Middle
+            Office valuation and risk, to Back Office settlements,
+            reconciliation and reporting.
+          </p>
+          <p>
+            I have worked with
+            <strong>Front Office, Middle Office, Back Office, Risk,
+              Operations</strong>
+            and technical teams, supporting business processes from trade
+            execution through settlement and reporting. I bring a
+            cross-functional perspective that allows me to trace problems
+            end-to-end — rather than treating each module in isolation.
+          </p>
+          <p>
+            My ETRM platform experience spans
+            <strong>Enuit Entrade, Hitachi nMarket</strong> and
+            <strong>Aligne ETRM</strong>. On the data and testing side, I use
+            <strong>SQL</strong> and tools like <strong>SoapUI</strong> to
+            investigate root causes and validate ETRM outputs at the database
+            level.
+          </p>
+          <p>
+            I'm currently building deeper expertise across Energy Trading,
+            Power &amp; Gas, Renewables, Battery Trading, Curve &amp; Market
+            Data, Valuation, Risk, and SQL &amp; Data Analytics.
+          </p>
+          <div class="philosophy-box fade-up d2">
+            <h4>My ETRM Philosophy</h4>
+            <p>
+              "An ETRM consultant should not only know how to configure a
+              screen or execute a test case. They should understand why the
+              trade is being done, how it's priced, how it affects position
+              and risk, how it generates P&amp;L, how it's settled, and how
+              it's finally reported. That end-to-end understanding is what
+              allows an ETRM consultant to solve problems effectively."
+            </p>
+          </div>
+        </div>
+        <div class="about-stats fade-up d1">
+          <div class="stat-card">
+            <div class="stat-num">4+</div>
+            <div class="stat-label">Years of ETRM Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Core ETRM Platforms</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">FO→BO</div>
+            <div class="stat-label">End-to-End Coverage</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">3</div>
+            <div class="stat-label">
+              Target Markets — UAE, Europe, Singapore
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise" class="expertise">
+    <span class="section-num">02</span>
+    <div class="section-inner">
+      <div class="section-tag fade-up">ETRM Knowledge Map</div>
+      <h2 class="section-title fade-up d1">End-to-End Functional Coverage</h2>
+      <div class="section-divider fade-up d2"></div>
+      <p class="expertise-intro fade-up d2">
+        My ETRM experience covers multiple areas of the trading lifecycle
+        rather than being limited to a single module. Below is how trading
+        activity flows through an ETRM system, and where my functional
+        expertise sits within each layer.
+      </p>
+      <div class="lifecycle-flow fade-up d1">
+        <div class="flow-column">
+          <span class="flow-label">Front Office</span>
+          <div class="flow-card">
+            <h4>Trading Operations</h4>
+            <ul>
+              <li>Trade Capture</li>
+              <li>Electronic Trade Execution</li>
+              <li>Market Submissions (nMarket)</li>
+              <li>Price Integration</li>
+              <li>EOD Validation</li>
+              <li>Trade Workflow Support</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flow-column">
+          <span class="flow-label">Middle Office</span>
+          <div class="flow-card">
+            <h4>Risk &amp; Valuation</h4>
+            <ul>
+              <li>Position Management</li>
+              <li>Curve Configuration</li>
+              <li>Market Data &amp; Pricing</li>
+              <li>Trade Valuation</li>
+              <li>Unrealized P&amp;L</li>
+              <li>Risk &amp; Exposure</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flow-column">
+          <span class="flow-label gold">Back Office</span>
+          <div class="flow-card gold-top">
+            <h4>Settlements &amp; Accounting</h4>
+            <ul>
+              <li>Settlement Calculations</li>
+              <li>Invoicing</li>
+              <li>JRA Reconciliation</li>
+              <li>Dispute Management</li>
+              <li>P&amp;L &amp; Cashflow Reporting</li>
+              <li>Accounting Alignment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="expertise-areas fade-up d2">
+        <h3>Deep-Dive by Functional Area</h3>
+        <div class="accordion">
+          <div class="acc-item">
+            <button class="acc-trigger" data-target="acc1">
+              <span class="acc-num">01</span>
+              <h4>Trade Capture</h4>
+              <i class="fas fa-plus acc-icon"></i>
+            </button>
+            <div class="acc-body" id="acc1">
+              <div class="acc-body-inner">
+                <p>
+                  Trade capture is the starting point of the ETRM lifecycle. A
+                  trade entered incorrectly creates downstream problems in
+                  Position &rarr; Valuation &rarr; P&amp;L &rarr; Risk &rarr;
+                  Settlement &rarr; Reporting. My focus: not just whether a
+                  trade exists in the system, but whether it has been captured
+                  with the correct business attributes.
+                </p>
+                <ul>
+                  <li>Counterparty &amp; Portfolio</li>
+                  <li>Commodity &amp; Product</li>
+                  <li>Buy / Sell Direction</li>
+                  <li>Trade Date &amp; Delivery Period</li>
+                  <li>Quantity &amp; Price</li>
+                  <li>Currency &amp; Location</li>
+                  <li>Settlement Terms</li>
+                  <li>Broker / Exchange</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-trigger" data-target="acc2">
+              <span class="acc-num">02</span>
+              <h4>Curve Configuration &amp; Market Data</h4>
+              <i class="fas fa-plus acc-icon"></i>
+            </button>
+            <div class="acc-body" id="acc2">
+              <div class="acc-body-inner">
+                <p>
+                  Market curves are critical because they provide the data
+                  required for valuation and risk calculations. A trade can be
+                  captured perfectly but still produce incorrect valuation if
+                  it references the wrong curve. I understand the full chain:
+                  Market &rarr; Curve &rarr; Index &rarr; Price Source &rarr;
+                  Tenor &rarr; Delivery Period &rarr; Valuation.
+                </p>
+                <ul>
+                  <li>Power &amp; Gas Curves</li>
+                  <li>FX &amp; Interest Rates</li>
+                  <li>Price Source Validation</li>
+                  <li>Forward Data Handling</li>
+                  <li>Historical Price Loading</li>
+                  <li>Curve-to-Trade Mapping</li>
+                  <li>Missing Data Investigation</li>
+                  <li>FMT Automated Imports</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-trigger" data-target="acc3">
+              <span class="acc-num">03</span>
+              <h4>Valuation &amp; P&amp;L</h4>
+              <i class="fas fa-plus acc-icon"></i>
+            </button>
+            <div class="acc-body" id="acc3">
+              <div class="acc-body-inner">
+                <p>
+                  Valuation connects trading positions with market data, and
+                  P&amp;L is one of the most important outputs of an ETRM
+                  system. I've worked on trade estimation, settlement
+                  calculations, and price &amp; FX data imports. I investigate
+                  valuation issues across: Trade &rarr; Market Data &rarr;
+                  Curve &rarr; Pricing &rarr; Valuation.
+                </p>
+                <ul>
+                  <li>Trade Quantity &amp; Price</li>
+                  <li>Forward Curve Reference</li>
+                  <li>FX Impact Analysis</li>
+                  <li>Delivery Period Mapping</li>
+                  <li>Realized vs Unrealized P&amp;L</li>
+                  <li>Portfolio-Level Results</li>
+                  <li>Cashflow Reporting Alignment</li>
+                  <li>Back Office System Alignment</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-trigger" data-target="acc4">
+              <span class="acc-num">04</span>
+              <h4>Settlements &amp; Reconciliation</h4>
+              <i class="fas fa-plus acc-icon"></i>
+            </button>
+            <div class="acc-body" id="acc4">
+              <div class="acc-body-inner">
+                <p>
+                  Settlement is where the commercial terms of a trade are
+                  translated into financial outcomes. Reconciliation ensures
+                  the numbers agree across systems. I've worked with JRA
+                  records, back-office dispute management, and SQL-level data
+                  investigation to identify where breaks occur.
+                </p>
+                <ul>
+                  <li>Trade Estimation</li>
+                  <li>Settlement Calculations</li>
+                  <li>Settlement Validation</li>
+                  <li>JRA Reconciliation</li>
+                  <li>Back Office Dispute Management</li>
+                  <li>FX Data Validation</li>
+                  <li>Settlement-Related Testing</li>
+                  <li>Root Cause Investigation (SQL)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-trigger" data-target="acc5">
+              <span class="acc-num">05</span>
+              <h4>Reporting</h4>
+              <i class="fas fa-plus acc-icon"></i>
+            </button>
+            <div class="acc-body" id="acc5">
+              <div class="acc-body-inner">
+                <p>
+                  ETRM reporting is not just about displaying numbers — it
+                  needs to answer business questions. My approach: Understand
+                  the business question &rarr; Understand the source data
+                  &rarr; Validate the calculation &rarr; Validate the output.
+                </p>
+                <ul>
+                  <li>Trading Reports (Trades, Volumes, Prices)</li>
+                  <li>Risk Reports (Exposure, Valuation)</li>
+                  <li>P&amp;L Reports (Realized &amp; Unrealized)</li>
+                  <li>Settlement Reports</li>
+                  <li>Operational Reports (Exceptions, Failures)</li>
+                  <li>Cashflow Reporting</li>
+                  <li>Cross-System Data Alignment</li>
+                  <li>ETRM Output Validation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-trigger" data-target="acc6">
+              <span class="acc-num">06</span>
+              <h4>Testing &amp; Production Support</h4>
+              <i class="fas fa-plus acc-icon"></i>
+            </button>
+            <div class="acc-body" id="acc6">
+              <div class="acc-body-inner">
+                <p>
+                  Good ETRM testing verifies not just "Does the screen work?"
+                  but "Does the complete business process work?" Production
+                  support has taught me that ETRM issues are rarely isolated —
+                  a settlement incident may originate from trade
+                  configuration, reference data, or integration.
+                </p>
+                <ul>
+                  <li>SIT &amp; UAT</li>
+                  <li>Sanity &amp; Functional Testing</li>
+                  <li>API Testing (SoapUI)</li>
+                  <li>Integration Testing</li>
+                  <li>Data Validation</li>
+                  <li>SQL Root Cause Analysis</li>
+                  <li>Incident Investigation</li>
+                  <li>End-to-End Process Validation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="experience">
+    <span class="section-num">03</span>
+    <div class="section-inner">
+      <div class="section-tag fade-up">Career</div>
+      <h2 class="section-title fade-up d1">My ETRM Journey</h2>
+      <div class="section-divider fade-up d2" style="margin-bottom: 3.5rem"></div>
+      <div class="timeline">
+        <div class="tl-item fade-up d1">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-meta">
+              <span class="tl-date">Jan 2024 – Present</span>
+              <span class="tl-location"><i class="fas fa-map-marker-alt"></i> Dublin, Ireland</span>
+            </div>
+            <h3 class="tl-role">Energy Trading Risk Management Consultant</h3>
+            <div class="tl-company">ETRMServices</div>
+            <ul class="tl-bullets">
+              <li>
+                <strong>Front Office Support:</strong> Act as primary
+                functional lead for FO teams, managing daily trade execution,
+                EOD validation, and price integration within Aligne ETRM.
+              </li>
+              <li>
+                <strong>Market Submissions:</strong> Utilised Hitachi nMarket
+                Bid Manager to create, review, and edit energy bids/offers
+                aligned with market conditions and regulatory requirements.
+              </li>
+              <li>
+                <strong>Settlements &amp; Valuation:</strong> Led trade
+                estimation and settlement calculations, utilising FMT Tool for
+                automated price and FX data importing.
+              </li>
+              <li>
+                <strong>Dispute &amp; Reconciliation:</strong> Validated data
+                consistency by cross-checking daily JRA records, supporting
+                back-office dispute management and root cause investigation.
+              </li>
+              <li>
+                <strong>Cross-Functional Alignment:</strong> Coordinated with
+                Capacity Team for generation audits; aligned back-office
+                systems with Aligne data for P&amp;L and cashflow reporting.
+              </li>
+              <li>
+                <strong>Release &amp; BAU Ownership:</strong> Managed daily
+                BAU operations, owned end-to-end Sanity, UAT, and Functional
+                testing cycles. Performed API, data, and integration testing
+                using SoapUI and SQL.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item fade-up d2">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-meta">
+              <span class="tl-date">May 2022 – Dec 2023</span>
+              <span class="tl-location"><i class="fas fa-map-marker-alt"></i> Bengaluru, India</span>
+            </div>
+            <h3 class="tl-role">ETRM Consultant</h3>
+            <div class="tl-company">Enuit LLC</div>
+            <ul class="tl-bullets">
+              <li>
+                Built my foundation in ETRM consulting — requirements
+                gathering, trade lifecycle, and Front / Middle / Back Office
+                processes using Enuit Entrade.
+              </li>
+              <li>
+                Requirement gathering, project scoping, and planning for
+                client engagements across energy markets.
+              </li>
+              <li>
+                Identified and resolved software bugs collaboratively;
+                performed database upgrades between system versions.
+              </li>
+              <li>
+                Debugged code and delivered solutions for client-raised issues
+                in settlements, accounting, and data processes.
+              </li>
+              <li>
+                Worked across front office, mid office, and back office for
+                settlements and accounting processes.
+              </li>
+              <li>
+                Participated in Sanity, UAT, SIT, and Functional testing;
+                managed physical/financial positions and electronic trade
+                execution.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills-sec">
+    <span class="section-num">04</span>
+    <div class="section-inner">
+      <div class="section-tag fade-up">Skills &amp; Expertise</div>
+      <h2 class="section-title fade-up d1">What I Bring to the Table</h2>
+      <div class="section-divider fade-up d2" style="margin-bottom: 3.5rem"></div>
+      <div class="skills-grid">
+        <div class="skill-group fade-up d1">
+          <h4>ETRM Functional</h4>
+          <div class="skill-chips">
+            <span class="chip primary">Trade Lifecycle</span>
+            <span class="chip primary">Position Management</span>
+            <span class="chip">Curve Configuration</span>
+            <span class="chip">Valuation</span>
+            <span class="chip">P&amp;L Analysis</span>
+            <span class="chip">Risk &amp; Exposure</span>
+            <span class="chip">Settlements</span>
+            <span class="chip">Invoicing</span>
+            <span class="chip">Reconciliation</span>
+            <span class="chip">Reference Data</span>
+          </div>
+        </div>
+        <div class="skill-group fade-up d2">
+          <h4>Trading Operations</h4>
+          <div class="skill-chips">
+            <span class="chip primary">Front Office Support</span>
+            <span class="chip">Market Submissions</span>
+            <span class="chip">Trade Capture</span>
+            <span class="chip">EOD Validation</span>
+            <span class="chip">Price Integration</span>
+            <span class="chip">Market Data</span>
+            <span class="chip">Scheduling</span>
+            <span class="chip">Back Office Processes</span>
+          </div>
+        </div>
+        <div class="skill-group fade-up d3">
+          <h4>Testing &amp; QA</h4>
+          <div class="skill-chips">
+            <span class="chip primary">UAT</span>
+            <span class="chip primary">SIT</span>
+            <span class="chip">Sanity Testing</span>
+            <span class="chip">Functional Testing</span>
+            <span class="chip">API Testing</span>
+            <span class="chip">Integration Testing</span>
+            <span class="chip">Data Validation</span>
+            <span class="chip">Root Cause Analysis</span>
+          </div>
+        </div>
+        <div class="skill-group fade-up d4">
+          <h4>Cross-Functional</h4>
+          <div class="skill-chips">
+            <span class="chip">Requirements Gathering</span>
+            <span class="chip">Functional Specifications</span>
+            <span class="chip">Regulatory Reporting</span>
+            <span class="chip">Production Support</span>
+            <span class="chip">BAU Operations</span>
+            <span class="chip">Stakeholder Management</span>
+            <span class="chip">Dispute Management</span>
+          </div>
+        </div>
+      </div>
+      <div class="etrm-apps-section fade-up d2">
+        <span class="etrm-apps-label">ETRM Applications</span>
+        <div class="etrm-app-cards">
+          <div class="etrm-app-card">
+            <img src="assets/enuit.png" alt="Enuit Entrade" class="etrm-app-logo" />
+            <div class="etrm-app-name">Enuit Entrade</div>
+          </div>
+          <div class="etrm-app-card">
+            <img src="assets/hitachi.png" alt="Hitachi nMarket" class="etrm-app-logo" />
+            <div class="etrm-app-name">Hitachi nMarket</div>
+          </div>
+          <div class="etrm-app-card">
+            <img src="assets/Aligne.png" alt="Aligne FIS" class="etrm-app-logo" />
+            <div class="etrm-app-name">Aligne FIS</div>
+          </div>
+          <div class="etrm-app-card">
+            <img src="assets/endur.png" alt="Endur ION" class="etrm-app-logo" />
+            <div class="etrm-app-name">Endur ION</div>
+          </div>
+        </div>
+        <div class="tool-strip">
+          <span class="tool-strip-label">Data &amp; Tools</span>
+          <div class="tech-pill">
+            <i class="fas fa-database"></i> SQL / MySQL
+          </div>
+          <div class="tech-pill"><i class="fas fa-code"></i> SoapUI</div>
+          <div class="tech-pill"><i class="fas fa-table"></i> Excel</div>
+          <div class="tech-pill"><i class="fas fa-tools"></i> FMT Tool</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="edu-sec">
+    <span class="section-num">05</span>
+    <div class="section-inner">
+      <div class="section-tag fade-up">Background</div>
+      <h2 class="section-title fade-up d1">Education &amp; Certifications</h2>
+      <div class="section-divider fade-up d2" style="margin-bottom: 3.5rem"></div>
+      <div class="edu-grid">
+        <div class="fade-up d1">
+          <h3 class="edu-col-title">Education</h3>
+          <div class="edu-item">
+            <h4 class="edu-degree">MBA — Business Analytics</h4>
+            <div class="edu-inst">DY Patil University</div>
+            <div class="edu-year">July 2022 – May 2024</div>
+          </div>
+          <div class="edu-item">
+            <h4 class="edu-degree">BCA — Information Technology</h4>
+            <div class="edu-inst">
+              Sahyog College of Management Studies, Mumbai
+            </div>
+            <div class="edu-year">2018 – 2021</div>
+          </div>
+        </div>
+        <div class="fade-up d2">
+          <h3 class="edu-col-title">Certifications</h3>
+          <div class="cert-item">
+            <div class="cert-name">Strategy Consulting</div>
+            <div class="cert-by">Accenture Australia</div>
+            <span class="cert-badge">Consulting</span>
+          </div>
+          <div class="cert-item">
+            <div class="cert-name">Project Manager Job Simulation</div>
+            <div class="cert-by">Siemens Mobility</div>
+            <span class="cert-badge">Project Management</span>
+          </div>
+          <div class="cert-item">
+            <div class="cert-name">Client Service Job Simulation</div>
+            <div class="cert-by">Bloomberg</div>
+            <span class="cert-badge">Finance</span>
+          </div>
+          <div class="cert-item">
+            <div class="cert-name">Strategy Consulting</div>
+            <div class="cert-by">BCG</div>
+            <span class="cert-badge">Consulting</span>
+          </div>
+          <div class="cert-item">
+            <div class="cert-name">MySQL Certification</div>
+            <div class="cert-by">MySQL</div>
+            <span class="cert-badge">Data</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN TO -->
+  <section class="open-to">
+    <div class="section-tag fade-up" style="color: var(--gold-lt)">
+      Open To Opportunities
+    </div>
+    <h2 class="section-title fade-up d1">Looking for My Next ETRM Role</h2>
+    <div class="section-divider fade-up d2"></div>
+    <p class="fade-up d2">
+      Currently open to onsite and hybrid opportunities in international
+      markets. Particularly interested in roles where end-to-end ETRM
+      expertise — from trade capture to reporting — creates real business
+      value.
+    </p>
+    <div class="geo-list fade-up d2">
+      <div class="geo-item">
+        <i class="fas fa-globe-americas"></i><span>UAE</span>
+      </div>
+      <div class="geo-item">
+        <i class="fas fa-globe-europe"></i><span>Europe</span>
+      </div>
+      <div class="geo-item">
+        <i class="fas fa-globe-asia"></i><span>Singapore</span>
+      </div>
+    </div>
+    <div class="roles-list fade-up d3">
+      <span class="role-pill">ETRM Consultant</span>
+      <span class="role-pill">Energy Trading Business Analyst</span>
+      <span class="role-pill">ETRM Functional Consultant</span>
+      <span class="role-pill">Energy Trading &amp; Risk Consultant</span>
+      <span class="role-pill">Trade Lifecycle / Settlement Consultant</span>
+    </div>
+    <a href="#contact" class="btn btn-gold fade-up d3">Let's Talk</a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <span class="section-num">06</span>
+    <div class="section-inner">
+      <div class="section-tag fade-up">Contact</div>
+      <h2 class="section-title fade-up d1">Let's Connect</h2>
+      <div class="section-divider fade-up d2" style="margin-bottom: 3.5rem"></div>
+      <div class="contact-grid">
+        <div class="contact-text fade-left">
+          <p>
+            If you're working in Energy Trading, ETRM, Power, Gas, Renewables,
+            Risk, Settlements or Energy Technology, I'd be happy to connect.
+          </p>
+          <p>
+            Whether it's a new role, a project, or just a conversation about
+            the ETRM landscape — feel free to reach out via LinkedIn or email.
+          </p>
+        </div>
+        <div class="contact-links fade-up d1">
+          <a href="https://linkedin.com/in/prabhatjhaetrm" target="_blank" rel="noopener" class="contact-link">
+            <div class="contact-link-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="contact-link-info">
+              <small>LinkedIn</small>
+              <span>linkedin.com/in/prabhatjhaetrm</span>
+            </div>
+          </a>
+          <a href="mailto:prabhatjha9028@gmail.com" class="contact-link">
+            <div class="contact-link-icon">
+              <i class="far fa-envelope"></i>
+            </div>
+            <div class="contact-link-info">
+              <small>Email</small>
+              <span>prabhatjha9028@gmail.com</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Prabhat Jha. ETRM Expert.</p>
+    <p>Designed with precision &amp; intent.</p>
+  </footer>
+
+  <div class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // Custom Cursor
+    const dot = document.getElementById("cursorDot");
+    const ring = document.getElementById("cursorRing");
+
+    window.addEventListener("mousemove", (e) => {
+      dot.style.left = e.clientX + "px";
+      dot.style.top = e.clientY + "px";
+      ring.animate(
+        { left: e.clientX + "px", top: e.clientY + "px" },
+        { duration: 450, fill: "forwards" },
+      );
+    });
+
+    document
+      .querySelectorAll("a, button, .chip, .tech-pill, .hero-tag, .role-pill")
+      .forEach((el) => {
+        el.addEventListener("mouseenter", () =>
+          ring.classList.add("hovered"),
+        );
+        el.addEventListener("mouseleave", () =>
+          ring.classList.remove("hovered"),
+        );
+      });
+
+    // Navbar
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () =>
+      navbar.classList.toggle("scrolled", window.scrollY > 40),
+    );
+
+    // Mobile menu
+    const toggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+    const mobileCloseBtn = document.getElementById("mobileCloseBtn");
+
+    function closeMobileMenu() {
+      navLinks.classList.remove("open");
+      toggle.classList.remove("open");
+    }
+
+    toggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      toggle.classList.toggle("open");
+    });
+
+    if (mobileCloseBtn) {
+      mobileCloseBtn.addEventListener("click", closeMobileMenu);
+    }
+
+    navLinks
+      .querySelectorAll("a")
+      .forEach((a) => a.addEventListener("click", closeMobileMenu));
+
+    // Scroll top
+    const scrollTopBtn = document.getElementById("scrollTop");
+    window.addEventListener("scroll", () =>
+      scrollTopBtn.classList.toggle("visible", window.scrollY > 500),
+    );
+    scrollTopBtn.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" }),
+    );
+
+    // Intersection observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    document
+      .querySelectorAll(".fade-up, .fade-left")
+      .forEach((el) => observer.observe(el));
+
+    // Accordion
+    document.querySelectorAll(".acc-trigger").forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const targetId = trigger.getAttribute("data-target");
+        const body = document.getElementById(targetId);
+        const isOpen = trigger.classList.contains("open");
+        document
+          .querySelectorAll(".acc-trigger")
+          .forEach((t) => t.classList.remove("open"));
+        document
+          .querySelectorAll(".acc-body")
+          .forEach((b) => b.classList.remove("open"));
+        if (!isOpen) {
+          trigger.classList.add("open");
+          body.classList.add("open");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
