@@ -18,6 +18,7 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="config.js"></script>
   <style>
     :root {
       --bg: #ffffff;
@@ -31,6 +32,7 @@
       --gold: #c9a84c;
       --gold-lt: #e0bf6e;
       --border: #eaeaea;
+
       --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.04);
       --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.07);
       --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.1);
@@ -1570,6 +1572,405 @@
         cursor: pointer;
       }
     }
+
+    /* AI Chatbot Launcher & Window Styles */
+    .chat-launcher {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--emerald) 0%, #166440 100%);
+      color: #fff;
+      border: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      cursor: none;
+      z-index: 1000;
+      box-shadow: 0 8px 25px rgba(13, 92, 58, 0.35);
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .chat-launcher:hover {
+      transform: scale(1.08) translateY(-2px);
+      background: linear-gradient(135deg, #106b44 0%, var(--emerald) 100%);
+      box-shadow: 0 12px 30px rgba(13, 92, 58, 0.45);
+    }
+
+    .chat-launcher .notification-badge {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      border: 2px solid #fff;
+      border-radius: 50%;
+      animation: pulse-gold 2s infinite;
+    }
+
+    @keyframes pulse-gold {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7);
+      }
+
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 8px rgba(201, 168, 76, 0);
+      }
+
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(201, 168, 76, 0);
+      }
+    }
+
+    .scroll-top.visible {
+      right: 6.2rem;
+    }
+
+    .chat-window {
+      position: fixed;
+      bottom: 6rem;
+      right: 2rem;
+      width: 390px;
+      height: 570px;
+      max-width: calc(100vw - 2.5rem);
+      max-height: calc(100vh - 7.5rem);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(201, 168, 76, 0.35);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 0 40px rgba(13, 92, 58, 0.08);
+      display: flex;
+      flex-direction: column;
+      z-index: 1001;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px) scale(0.95);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    .chat-window.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .chat-header {
+      padding: 1.1rem 1.2rem;
+      background: linear-gradient(135deg, var(--emerald) 0%, #09472d 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+    }
+
+    .chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .chat-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      object-fit: cover;
+      background: var(--bg-off);
+    }
+
+    .chat-title-group h4 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .chat-status {
+      font-size: 0.72rem;
+      color: var(--gold-lt);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.1rem;
+    }
+
+    .chat-status-dot {
+      width: 7px;
+      height: 7px;
+      background: #2ea043;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #2ea043;
+    }
+
+    .chat-header-actions {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .chat-action-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: none;
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      cursor: none;
+      transition: background 0.2s;
+    }
+
+    .chat-action-btn:hover {
+      background: rgba(201, 168, 76, 0.3);
+      color: var(--gold-lt);
+    }
+
+    .chat-suggestions {
+      padding: 0.65rem 0.85rem;
+      background: var(--bg-off);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .chat-suggestions::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chat-chip {
+      white-space: nowrap;
+      font-size: 0.72rem;
+      padding: 0.35rem 0.75rem;
+      background: #fff;
+      border: 1px solid rgba(201, 168, 76, 0.35);
+      border-radius: 20px;
+      color: var(--emerald);
+      cursor: none;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .chat-chip:hover {
+      background: var(--emerald);
+      color: #fff;
+      border-color: var(--emerald);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      background: #fdfdfc;
+      scroll-behavior: smooth;
+    }
+
+    .chat-msg {
+      display: flex;
+      flex-direction: column;
+      max-width: 88%;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .chat-msg.user {
+      align-self: flex-end;
+      align-items: flex-end;
+    }
+
+    .chat-msg.assistant {
+      align-self: flex-start;
+      align-items: flex-start;
+    }
+
+    .chat-bubble {
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
+      font-size: 0.83rem;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .chat-msg.user .chat-bubble {
+      background: linear-gradient(135deg, var(--emerald) 0%, #166440 100%);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 4px 12px rgba(13, 92, 58, 0.15);
+    }
+
+    .chat-msg.assistant .chat-bubble {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .chat-msg.assistant .chat-bubble p {
+      margin-bottom: 0.5rem;
+    }
+
+    .chat-msg.assistant .chat-bubble p:last-child {
+      margin-bottom: 0;
+    }
+
+    .chat-msg.assistant .chat-bubble ul {
+      list-style: disc;
+      margin-left: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chat-msg.assistant .chat-bubble strong {
+      color: var(--emerald);
+      font-weight: 600;
+    }
+
+    .chat-time {
+      font-size: 0.65rem;
+      color: var(--lighter);
+      margin-top: 0.25rem;
+      padding: 0 0.2rem;
+    }
+
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.6rem 0.9rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      width: fit-content;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: typingBounce 1.4s infinite ease-in-out both;
+    }
+
+    .typing-dot:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .typing-dot:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    @keyframes typingBounce {
+
+      0%,
+      80%,
+      100% {
+        transform: scale(0);
+      }
+
+      40% {
+        transform: scale(1);
+      }
+    }
+
+    .chat-input-wrapper {
+      padding: 0.8rem 1rem;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 0.65rem 1rem;
+      font-size: 0.84rem;
+      outline: none;
+      font-family: "Inter", sans-serif;
+      background: var(--bg-off);
+      color: var(--text);
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .chat-input:focus {
+      border-color: var(--emerald);
+      background: #fff;
+    }
+
+    .chat-send-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--emerald);
+      color: #fff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      cursor: none;
+      transition: all 0.25s;
+      flex-shrink: 0;
+    }
+
+    .chat-send-btn:hover {
+      background: var(--emerald-lt);
+      transform: scale(1.05);
+    }
+
+    .chat-send-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .chat-window {
+        bottom: 1rem;
+        right: 1rem;
+        width: calc(100vw - 2rem);
+        height: 82vh;
+      }
+
+      .chat-launcher {
+        bottom: 1.5rem;
+        right: 1.5rem;
+      }
+
+      .scroll-top.visible {
+        right: 5.4rem;
+      }
+    }
   </style>
 </head>
 
@@ -2288,6 +2689,67 @@
     <i class="fas fa-arrow-up"></i>
   </div>
 
+  <!-- AI Chatbot Launcher & Modal -->
+  <div id="aiChatWidget">
+    <!-- Floating Launcher Button -->
+    <button class="chat-launcher" id="chatLauncher" aria-label="Open Prabhat's AI Assistant"
+      title="Chat with Prabhat's AI Assistant">
+      <i class="fa-solid fa-sparkles"></i>
+      <span class="notification-badge" id="chatNotificationBadge"></span>
+    </button>
+
+    <!-- Chat Modal Window -->
+    <div class="chat-window" id="chatWindow" role="dialog" aria-label="Prabhat's AI Assistant">
+      <!-- Header -->
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <img src="assets/profile.png" alt="Prabhat Jha" class="chat-avatar" />
+          <div class="chat-title-group">
+            <h4>Prabhat's AI Assistant</h4>
+            <div class="chat-status">
+              <span class="chat-status-dot"></span>
+              <span id="chatEngineStatus">Online • ETRM Assistant</span>
+            </div>
+          </div>
+        </div>
+        <div class="chat-header-actions">
+          <button class="chat-action-btn" id="chatCloseBtn" title="Close Chat" aria-label="Close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Suggestion Chips -->
+      <div class="chat-suggestions" id="chatSuggestions">
+        <button class="chat-chip" data-query="What is Prabhat's ETRM experience?">ETRM Experience</button>
+        <button class="chat-chip" data-query="Which ETRM platforms has he worked with?">ETRM Platforms</button>
+        <button class="chat-chip" data-query="What are his functional areas in settlements?">Settlements & P&L</button>
+        <button class="chat-chip" data-query="What is his educational background?">Education</button>
+        <button class="chat-chip" data-query="How can I contact Prabhat?">Contact Info</button>
+      </div>
+
+      <!-- Chat Messages Container -->
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg assistant">
+          <div class="chat-bubble">
+            <p>👋 Hello! I am <strong>Prabhat's AI Assistant</strong>.</p>
+            <p>How can I help you today regarding Prabhat's ETRM consulting background or experience?</p>
+          </div>
+          <span class="chat-time">Just now</span>
+        </div>
+      </div>
+
+      <!-- Input Bar -->
+      <form class="chat-input-wrapper" id="chatForm">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Ask about Prabhat's ETRM background..."
+          autocomplete="off" />
+        <button type="submit" id="chatSendBtn" class="chat-send-btn" aria-label="Send message">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
   <script>
     // Custom Cursor
     const dot = document.getElementById("cursorDot");
@@ -2303,7 +2765,7 @@
     });
 
     document
-      .querySelectorAll("a, button, .chip, .tech-pill, .hero-tag, .role-pill")
+      .querySelectorAll("a, button, .chip, .tech-pill, .hero-tag, .role-pill, .chat-launcher, .chat-chip, .chat-action-btn, .chat-send-btn")
       .forEach((el) => {
         el.addEventListener("mouseenter", () =>
           ring.classList.add("hovered"),
@@ -2385,6 +2847,389 @@
         }
       });
     });
+
+    // --- AI CHATBOT LOGIC ENGINE ---
+    (function () {
+      const EMBEDDED_PROFILE = {
+        personalInformation: {
+          fullName: "Prabhat Jha",
+          title: "ETRM Functional Consultant — Energy Trading & Risk Management",
+          tagline: "Working at the intersection of energy markets, trading operations, ETRM platforms and data.",
+          currentLocation: "Dublin, Ireland",
+          totalExperience: "4+ Years",
+          email: "prabhatjha9028@gmail.com",
+          linkedIn: "https://linkedin.com/in/prabhatjhaetrm",
+          targetMarkets: ["UAE", "Europe", "Singapore"]
+        },
+        summary: "ETRM Functional Consultant with hands-on experience across the full energy trading lifecycle — from Front Office trade capture and market submissions through Middle Office valuation and risk, to Back Office settlements, reconciliation and reporting.",
+        philosophy: "An ETRM consultant should not only know how to configure a screen or execute a test case. They should understand why the trade is being done, how it's priced, how it affects position and risk, how it generates P&L, how it's settled, and how it's finally reported. That end-to-end understanding is what allows an ETRM consultant to solve problems effectively.",
+        domainExpertise: {
+          commodities: ["Power", "Gas", "Renewables", "Battery Trading"],
+          etrmPlatforms: ["Enuit Entrade", "Hitachi nMarket", "Aligne FIS", "Endur ION"],
+          technicalTools: ["SQL / MySQL", "SoapUI", "Excel", "FMT Tool"]
+        },
+        workExperience: [
+          {
+            company: "ETRMServices",
+            role: "Energy Trading Risk Management Consultant",
+            period: "Jan 2024 – Present",
+            location: "Dublin, Ireland",
+            responsibilities: [
+              "Front Office Support: Primary functional lead for FO teams, managing daily trade execution, EOD validation, and price integration within Aligne ETRM.",
+              "Market Submissions: Utilised Hitachi nMarket Bid Manager to create, review, and edit energy bids/offers aligned with market conditions and regulatory requirements.",
+              "Settlements & Valuation: Led trade estimation and settlement calculations, utilising FMT Tool for automated price and FX data importing.",
+              "Dispute & Reconciliation: Validated data consistency by cross-checking daily JRA records, supporting back-office dispute management and root cause investigation.",
+              "Cross-Functional Alignment: Coordinated with Capacity Team for generation audits; aligned back-office systems with Aligne data for P&L and cashflow reporting.",
+              "Release & BAU Ownership: Managed daily BAU operations, owned end-to-end Sanity, UAT, and Functional testing cycles. Performed API, data, and integration testing using SoapUI and SQL."
+            ]
+          },
+          {
+            company: "Enuit LLC",
+            role: "ETRM Consultant",
+            period: "May 2022 – Dec 2023",
+            location: "Bengaluru, India",
+            responsibilities: [
+              "Built foundation in ETRM consulting — requirements gathering, trade lifecycle, and Front / Middle / Back Office processes using Enuit Entrade.",
+              "Requirement gathering, project scoping, and planning for client engagements across energy markets.",
+              "Identified and resolved software bugs collaboratively; performed database upgrades between system versions.",
+              "Debugged code and delivered solutions for client-raised issues in settlements, accounting, and data processes.",
+              "Worked across front office, mid office, and back office for settlements and accounting processes.",
+              "Participated in Sanity, UAT, SIT, and Functional testing; managed physical/financial positions and electronic trade execution."
+            ]
+          }
+        ],
+        functionalAreas: {
+          tradeCapture: ["Counterparty & Portfolio", "Commodity & Product", "Buy / Sell Direction", "Trade Date & Delivery Period", "Quantity & Price", "Currency & Location", "Settlement Terms", "Broker / Exchange"],
+          curveConfigurationAndMarketData: ["Power & Gas Curves", "FX & Interest Rates", "Price Source Validation", "Forward Data Handling", "Historical Price Loading", "Curve-to-Trade Mapping", "Missing Data Investigation", "FMT Automated Imports"],
+          valuationAndPnL: ["Trade Quantity & Price", "Forward Curve Reference", "FX Impact Analysis", "Delivery Period Mapping", "Realized vs Unrealized P&L", "Portfolio-Level Results", "Cashflow Reporting Alignment", "Back Office System Alignment"],
+          settlementsAndReconciliation: ["Trade Estimation", "Settlement Calculations", "Settlement Validation", "JRA Reconciliation", "Back Office Dispute Management", "FX Data Validation", "Settlement-Related Testing", "Root Cause Investigation (SQL)"],
+          reporting: ["Trading Reports (Trades, Volumes, Prices)", "Risk Reports (Exposure, Valuation)", "P&L Reports (Realized & Unrealized)", "Settlement Reports", "Operational Reports (Exceptions, Failures)", "Cashflow Reporting", "Cross-System Data Alignment", "ETRM Output Validation"],
+          testingAndProductionSupport: ["SIT & UAT", "Sanity & Functional Testing", "API Testing (SoapUI)", "Integration Testing", "Data Validation", "SQL Root Cause Analysis", "Incident Investigation", "End-to-End Process Validation"]
+        },
+        education: [
+          { degree: "MBA — Business Analytics", institution: "DY Patil University", period: "July 2022 – May 2024" },
+          { degree: "BCA — Information Technology", institution: "Sahyog College of Management Studies, Mumbai", period: "2018 – 2021" }
+        ],
+        certifications: [
+          { name: "Strategy Consulting", issuer: "Accenture Australia", category: "Consulting" },
+          { name: "Project Manager Job Simulation", issuer: "Siemens Mobility", category: "Project Management" },
+          { name: "Client Service Job Simulation", issuer: "Bloomberg", category: "Finance" },
+          { name: "Strategy Consulting", issuer: "BCG", category: "Consulting" },
+          { name: "MySQL Certification", issuer: "MySQL", category: "Data" }
+        ],
+        targetRoles: ["ETRM Consultant", "Energy Trading Business Analyst", "ETRM Functional Consultant", "Energy Trading & Risk Consultant", "Trade Lifecycle / Settlement Consultant"]
+      };
+
+      let profileData = EMBEDDED_PROFILE;
+
+      fetch("prabhat_jha_profile.json")
+        .then((res) => {
+          if (res.ok) return res.json();
+          throw new Error("Local fetch skipped");
+        })
+        .then((data) => {
+          if (data && data.personalInformation) {
+            profileData = data;
+          }
+        })
+        .catch(() => { });
+
+      const launcher = document.getElementById("chatLauncher");
+      const chatWindow = document.getElementById("chatWindow");
+      const closeBtn = document.getElementById("chatCloseBtn");
+      const chatForm = document.getElementById("chatForm");
+      const chatInput = document.getElementById("chatInput");
+      const chatSendBtn = document.getElementById("chatSendBtn");
+      const chatMessages = document.getElementById("chatMessages");
+      const chatSuggestions = document.getElementById("chatSuggestions");
+      const badge = document.getElementById("chatNotificationBadge");
+
+      if (!launcher || !chatWindow) return;
+
+      function getApiKey() {
+        return localStorage.getItem("gemini_api_key") || (typeof window !== "undefined" && window.ENV_API_KEY) || (typeof PORTFOLIO_AI_CONFIG !== "undefined" ? PORTFOLIO_AI_CONFIG.GEMINI_API_KEY : "");
+      }
+
+      function toggleChatWindow() {
+        const isOpen = chatWindow.classList.contains("open");
+        if (isOpen) {
+          chatWindow.classList.remove("open");
+        } else {
+          chatWindow.classList.add("open");
+          if (badge) badge.style.display = "none";
+          setTimeout(() => chatInput.focus(), 300);
+        }
+      }
+
+      launcher.addEventListener("click", toggleChatWindow);
+      closeBtn.addEventListener("click", toggleChatWindow);
+
+      chatSuggestions.addEventListener("click", (e) => {
+        const chip = e.target.closest(".chat-chip");
+        if (!chip) return;
+        const query = chip.getAttribute("data-query");
+        if (query) {
+          chatInput.value = query;
+          handleUserSubmit(query);
+        }
+      });
+
+      chatForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const query = chatInput.value.trim();
+        if (query) {
+          handleUserSubmit(query);
+        }
+      });
+
+      function getTimeString() {
+        const now = new Date();
+        return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      }
+
+      function appendMessage(role, text) {
+        const msgDiv = document.createElement("div");
+        msgDiv.className = `chat-msg ${role}`;
+
+        const bubble = document.createElement("div");
+        bubble.className = "chat-bubble";
+        bubble.innerHTML = formatMarkdown(text);
+
+        const timeSpan = document.createElement("span");
+        timeSpan.className = "chat-time";
+        timeSpan.textContent = getTimeString();
+
+        msgDiv.appendChild(bubble);
+        msgDiv.appendChild(timeSpan);
+        chatMessages.appendChild(msgDiv);
+
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function formatMarkdown(text) {
+        if (!text) return "";
+        let formatted = text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+
+        formatted = formatted.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+        const lines = formatted.split("\n");
+        let htmlResult = "";
+        let inList = false;
+
+        lines.forEach((line) => {
+          const trimmed = line.trim();
+          if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
+            if (!inList) {
+              htmlResult += "<ul>";
+              inList = true;
+            }
+            htmlResult += `<li>${trimmed.substring(2)}</li>`;
+          } else {
+            if (inList) {
+              htmlResult += "</ul>";
+              inList = false;
+            }
+            if (trimmed.length > 0) {
+              htmlResult += `<p>${line}</p>`;
+            }
+          }
+        });
+
+        if (inList) htmlResult += "</ul>";
+        return htmlResult || `<p>${text}</p>`;
+      }
+
+      function showTypingIndicator() {
+        const indicator = document.createElement("div");
+        indicator.className = "chat-msg assistant";
+        indicator.id = "activeTypingIndicator";
+        indicator.innerHTML = `
+          <div class="typing-indicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </div>
+        `;
+        chatMessages.appendChild(indicator);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function hideTypingIndicator() {
+        const indicator = document.getElementById("activeTypingIndicator");
+        if (indicator) indicator.remove();
+      }
+
+      function handleUserSubmit(userQuery) {
+        appendMessage("user", userQuery);
+        chatInput.value = "";
+        chatSendBtn.disabled = true;
+        showTypingIndicator();
+
+        const apiKey = getApiKey();
+        const model = (typeof PORTFOLIO_AI_CONFIG !== "undefined" && PORTFOLIO_AI_CONFIG.MODEL_NAME) ? PORTFOLIO_AI_CONFIG.MODEL_NAME : "gemini-2.5-flash";
+
+        if (apiKey) {
+          callGeminiApi(userQuery, apiKey, model)
+            .then((reply) => {
+              hideTypingIndicator();
+              appendMessage("assistant", reply);
+              chatSendBtn.disabled = false;
+            })
+            .catch((err) => {
+              console.warn("Gemini API call failed, falling back to Knowledge Engine:", err);
+              const offlineReply = queryLocalKnowledgeEngine(userQuery);
+              hideTypingIndicator();
+              appendMessage("assistant", offlineReply);
+              chatSendBtn.disabled = false;
+            });
+        } else {
+          setTimeout(() => {
+            const offlineReply = queryLocalKnowledgeEngine(userQuery);
+            hideTypingIndicator();
+            appendMessage("assistant", offlineReply);
+            chatSendBtn.disabled = false;
+          }, 550);
+        }
+      }
+
+      async function callGeminiApi(userQuery, apiKey, modelName) {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+
+        const systemInstructionText = `You are Prabhat's official AI Assistant.
+Your sole purpose is to answer user questions about Prabhat Jha using ONLY the Profile Data JSON below.
+
+Profile Data:
+${JSON.stringify(profileData, null, 2)}
+
+Response Rules:
+1. NATURAL CONVERSATIONAL SYNTHESIS: Compose natural, well-articulated, conversational answers in your own words based on the profile data. Do NOT repeat exact JSON lines verbatim or use rigid mechanical templates.
+2. GREETINGS: If the user greets you ("hi", "hello", "hey", "good morning", "greetings"), respond warmly and sincerely without dumping profile details.
+3. GROUND TRUTH: All factual details (companies, roles, ETRM platforms like Enuit/Aligne/Hitachi nMarket, tools like SoapUI/SQL/FMT, education, dates, locations, target markets) MUST be strictly grounded in the profile JSON. Never invent facts.
+4. OUT-OF-BOUNDS: If asked unrelated questions (coding tutorials, weather, sports, politics), respond with:
+"I am an AI assistant specialized exclusively in Prabhat Jha's professional background and ETRM expertise. I can only answer questions related to Prabhat's skills, experience, education, domain expertise, and ETRM consulting career."`;
+
+        const requestBody = {
+          contents: [
+            {
+              role: "user",
+              parts: [{ text: userQuery }]
+            }
+          ],
+          systemInstruction: {
+            parts: [{ text: systemInstructionText }]
+          },
+          generationConfig: {
+            temperature: 0.3,
+            maxOutputTokens: 550
+          }
+        };
+
+        const res = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(requestBody)
+        });
+
+        if (!res.ok) {
+          const errorData = await res.json().catch(() => ({}));
+          throw new Error(errorData.error?.message || `HTTP ${res.status}`);
+        }
+
+        const data = await res.json();
+        const candidate = data.candidates?.[0];
+        const text = candidate?.content?.parts?.[0]?.text;
+        if (!text) throw new Error("Empty response from Gemini API");
+
+        return text.trim();
+      }
+
+      function queryLocalKnowledgeEngine(query) {
+        const q = query.toLowerCase().trim();
+
+        const refusalMsg = (typeof PORTFOLIO_AI_CONFIG !== "undefined" && PORTFOLIO_AI_CONFIG.REFUSAL_MESSAGE) ? PORTFOLIO_AI_CONFIG.REFUSAL_MESSAGE : "I am an AI assistant specialized exclusively in Prabhat Jha's professional background and ETRM expertise. I can only answer questions related to Prabhat's skills, experience, education, domain expertise, and ETRM consulting career.";
+
+        // 1. Sincere Greetings
+        const greetings = ["hi", "hello", "hey", "good morning", "good afternoon", "greetings", "howdy", "hi there", "hello there", "sup"];
+        if (greetings.includes(q) || q.startsWith("hi ") || q.startsWith("hello ")) {
+          return "Hello! 👋 Welcome to Prabhat Jha's portfolio. How can I assist you today regarding Prabhat's ETRM experience or skills?";
+        }
+
+        const offTopicTriggers = [
+          "weather", "capital of", "recipe", "python", "javascript code", "write script",
+          "who is president", "tell a joke", "soccer", "football", "movie", "calculate",
+          "math", "song", "poem", "politics", "crypto", "stock price", "baking", "cook"
+        ];
+
+        const onTopicTriggers = [
+          "prabhat", "jha", "etrm", "ctrm", "enuit", "entrade", "aligne", "hitachi", "nmarket",
+          "endur", "ion", "energy", "trading", "risk", "settlement", "pnl", "valuation", "power",
+          "gas", "renewables", "battery", "dublin", "ireland", "bengaluru", "india", "experience",
+          "role", "job", "work", "company", "education", "mba", "bca", "dy patil", "sahyog",
+          "certification", "accenture", "siemens", "bloomberg", "bcg", "mysql", "soapui", "sql",
+          "fmt", "trade capture", "reconciliation", "jra", "contact", "email", "linkedin",
+          "location", "skills", "philosoph", "summary", "consultant", "bid", "bids", "offer",
+          "offers", "front office", "mid office", "middle office", "back office", "testing",
+          "uat", "sit", "sanity", "curve", "curves", "target", "market"
+        ];
+
+        const isOffTopic = offTopicTriggers.some((word) => q.includes(word)) && !onTopicTriggers.some((word) => q.includes(word));
+        const hasOnTopicMatch = onTopicTriggers.some((word) => q.includes(word));
+
+        if (isOffTopic || (!hasOnTopicMatch && q.split(" ").length > 3)) {
+          return refusalMsg;
+        }
+
+        // 2. Synthesized Intent Matches
+        if (q.includes("front office") || q.includes("fo ") || q.includes("bid") || q.includes("offer") || q.includes("trade capture")) {
+          return `In the Front Office, Prabhat serves as the primary functional lead for daily trade execution, EOD validation, and price integrations within **Aligne ETRM**.\n\nHe also utilizes **Hitachi nMarket Bid Manager** to construct, review, and submit energy bids and offers tailored to market conditions and regulatory requirements.`;
+        }
+
+        if (q.includes("settlement") || q.includes("reconciliation") || q.includes("jra") || q.includes("dispute") || q.includes("fmt")) {
+          return `Prabhat has extensive Back Office experience managing trade estimations, settlement calculations, and automated price/FX data imports via the **FMT Tool**.\n\nHe regularly performs root-cause investigations using SQL to resolve data discrepancies and validate daily **JRA records** for dispute management.`;
+        }
+
+        if (q.includes("valuation") || q.includes("pnl") || q.includes("p&l") || q.includes("middle office") || q.includes("risk")) {
+          return `In Middle Office operations, Prabhat manages Realized vs. Unrealized P&L alignment and cashflow reporting across systems.\n\nHe evaluates trade pricing references against forward curves, analyzes FX impacts, and ensures portfolio-level valuation consistency.`;
+        }
+
+        if (q.includes("platform") || q.includes("enuit") || q.includes("entrade") || q.includes("aligne") || q.includes("hitachi") || q.includes("nmarket") || q.includes("endur") || q.includes("ion")) {
+          return `Prabhat has hands-on functional experience across several industry-leading ETRM platforms:\n\n* **Aligne FIS**: Primary functional lead at ETRMServices for FO execution, price integration, P&L reporting, and BAU management.\n* **Enuit Entrade**: Built core ETRM foundation at Enuit LLC handling trade lifecycle setup, bug debugging, system testing, and DB upgrades.\n* **Hitachi nMarket**: Bid Manager usage for energy bids and offer submissions.\n* **Endur ION**: Domain familiarity across core trading & risk concepts.`;
+        }
+
+        if (q.includes("tool") || q.includes("soapui") || q.includes("sql") || q.includes("mysql") || q.includes("fmt") || q.includes("api")) {
+          return `Prabhat works with key technical tools to support ETRM workflows:\n\n* **SQL / MySQL**: Root-cause analysis, data validation, database upgrades, and issue debugging.\n* **SoapUI**: API, data, and integration testing across ETRM system interfaces.\n* **FMT Tool**: Automated importing of daily price and FX market data.`;
+        }
+
+        if (q.includes("testing") || q.includes("uat") || q.includes("sit") || q.includes("sanity") || q.includes("bau")) {
+          return `Prabhat owns end-to-end testing cycles including **Sanity**, **SIT**, **UAT**, and **Functional testing** for new ETRM releases.\n\nHe manages daily BAU operations, performs API testing via SoapUI, and collaborates with capacity teams for generation audits.`;
+        }
+
+        if (q.includes("experience") || q.includes("work") || q.includes("company") || q.includes("etrmservices") || q.includes("enuit llc")) {
+          return `Prabhat brings **4+ Years** of ETRM Functional Consulting experience:\n\n* **ETRMServices** (Jan 2024 – Present | Dublin, Ireland): Functional lead for Front, Middle, and Back Office operations within Aligne ETRM & Hitachi nMarket.\n* **Enuit LLC** (May 2022 – Dec 2023 | Bengaluru, India): ETRM consultant focused on Enuit Entrade configuration, requirements gathering, and trade lifecycle support.`;
+        }
+
+        if (q.includes("commodity") || q.includes("power") || q.includes("gas") || q.includes("renewab") || q.includes("battery")) {
+          return `Prabhat's commodity coverage spans **Power**, **Gas**, **Renewables**, and **Battery Trading** across the complete trade lifecycle.`;
+        }
+
+        if (q.includes("education") || q.includes("degree") || q.includes("certif") || q.includes("mba") || q.includes("bca")) {
+          return `Prabhat holds an **MBA in Business Analytics** from DY Patil University (2022–2024) and a **BCA in Information Technology** from Sahyog College, Mumbai (2018–2021).\n\nHe holds strategy & project management job simulation certifications from **Accenture**, **Siemens Mobility**, **Bloomberg**, **BCG**, and **MySQL**.`;
+        }
+
+        if (q.includes("contact") || q.includes("email") || q.includes("linkedin") || q.includes("reach") || q.includes("where") || q.includes("location")) {
+          return `Prabhat is currently based in **Dublin, Ireland**.\n\n* **Email**: [prabhatjha9028@gmail.com](mailto:prabhatjha9028@gmail.com)\n* **LinkedIn**: [linkedin.com/in/prabhatjhaetrm](https://linkedin.com/in/prabhatjhaetrm)\n* **Target Markets**: UAE, Europe, and Singapore\n* **Target Roles**: ETRM Consultant, Energy Trading Business Analyst, Settlement Consultant`;
+        }
+
+        if (q.includes("philosoph") || q.includes("approach")) {
+          return `*"${profileData.philosophy}"*`;
+        }
+
+        return `Prabhat Jha is an **ETRM Functional Consultant** (4+ Years experience in Dublin, Ireland) specializing in Aligne FIS, Enuit Entrade, and Hitachi nMarket.\n\nWhat specific detail regarding Prabhat's ETRM background can I help you with?`;
+      }
+    })();
   </script>
 </body>
 

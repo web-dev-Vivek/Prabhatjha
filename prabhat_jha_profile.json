@@ -1,0 +1,167 @@
+{
+  "personalInformation": {
+    "fullName": "Prabhat Jha",
+    "title": "ETRM Functional Consultant — Energy Trading & Risk Management",
+    "tagline": "Working at the intersection of energy markets, trading operations, ETRM platforms and data.",
+    "currentLocation": "Dublin, Ireland",
+    "totalExperience": "4+ Years",
+    "email": "prabhatjha9028@gmail.com",
+    "linkedIn": "https://linkedin.com/in/prabhatjhaetrm",
+    "targetMarkets": ["UAE", "Europe", "Singapore"]
+  },
+  "summary": "ETRM Functional Consultant with hands-on experience across the full energy trading lifecycle — from Front Office trade capture and market submissions through Middle Office valuation and risk, to Back Office settlements, reconciliation and reporting.",
+  "philosophy": "An ETRM consultant should not only know how to configure a screen or execute a test case. They should understand why the trade is being done, how it's priced, how it affects position and risk, how it generates P&L, how it's settled, and how it's finally reported. That end-to-end understanding is what allows an ETRM consultant to solve problems effectively.",
+  "domainExpertise": {
+    "commodities": ["Power", "Gas", "Renewables", "Battery Trading"],
+    "etrmPlatforms": [
+      "Enuit Entrade",
+      "Hitachi nMarket",
+      "Aligne FIS",
+      "Endur ION"
+    ],
+    "technicalTools": [
+      "SQL / MySQL",
+      "SoapUI",
+      "Excel",
+      "FMT Tool"
+    ]
+  },
+  "workExperience": [
+    {
+      "company": "ETRMServices",
+      "role": "Energy Trading Risk Management Consultant",
+      "period": "Jan 2024 – Present",
+      "location": "Dublin, Ireland",
+      "responsibilities": [
+        "Front Office Support: Primary functional lead for FO teams, managing daily trade execution, EOD validation, and price integration within Aligne ETRM.",
+        "Market Submissions: Utilised Hitachi nMarket Bid Manager to create, review, and edit energy bids/offers aligned with market conditions and regulatory requirements.",
+        "Settlements & Valuation: Led trade estimation and settlement calculations, utilising FMT Tool for automated price and FX data importing.",
+        "Dispute & Reconciliation: Validated data consistency by cross-checking daily JRA records, supporting back-office dispute management and root cause investigation.",
+        "Cross-Functional Alignment: Coordinated with Capacity Team for generation audits; aligned back-office systems with Aligne data for P&L and cashflow reporting.",
+        "Release & BAU Ownership: Managed daily BAU operations, owned end-to-end Sanity, UAT, and Functional testing cycles. Performed API, data, and integration testing using SoapUI and SQL."
+      ]
+    },
+    {
+      "company": "Enuit LLC",
+      "role": "ETRM Consultant",
+      "period": "May 2022 – Dec 2023",
+      "location": "Bengaluru, India",
+      "responsibilities": [
+        "Built foundation in ETRM consulting — requirements gathering, trade lifecycle, and Front / Middle / Back Office processes using Enuit Entrade.",
+        "Requirement gathering, project scoping, and planning for client engagements across energy markets.",
+        "Identified and resolved software bugs collaboratively; performed database upgrades between system versions.",
+        "Debugged code and delivered solutions for client-raised issues in settlements, accounting, and data processes.",
+        "Worked across front office, mid office, and back office for settlements and accounting processes.",
+        "Participated in Sanity, UAT, SIT, and Functional testing; managed physical/financial positions and electronic trade execution."
+      ]
+    }
+  ],
+  "functionalAreas": {
+    "tradeCapture": [
+      "Counterparty & Portfolio",
+      "Commodity & Product",
+      "Buy / Sell Direction",
+      "Trade Date & Delivery Period",
+      "Quantity & Price",
+      "Currency & Location",
+      "Settlement Terms",
+      "Broker / Exchange"
+    ],
+    "curveConfigurationAndMarketData": [
+      "Power & Gas Curves",
+      "FX & Interest Rates",
+      "Price Source Validation",
+      "Forward Data Handling",
+      "Historical Price Loading",
+      "Curve-to-Trade Mapping",
+      "Missing Data Investigation",
+      "FMT Automated Imports"
+    ],
+    "valuationAndPnL": [
+      "Trade Quantity & Price",
+      "Forward Curve Reference",
+      "FX Impact Analysis",
+      "Delivery Period Mapping",
+      "Realized vs Unrealized P&L",
+      "Portfolio-Level Results",
+      "Cashflow Reporting Alignment",
+      "Back Office System Alignment"
+    ],
+    "settlementsAndReconciliation": [
+      "Trade Estimation",
+      "Settlement Calculations",
+      "Settlement Validation",
+      "JRA Reconciliation",
+      "Back Office Dispute Management",
+      "FX Data Validation",
+      "Settlement-Related Testing",
+      "Root Cause Investigation (SQL)"
+    ],
+    "reporting": [
+      "Trading Reports (Trades, Volumes, Prices)",
+      "Risk Reports (Exposure, Valuation)",
+      "P&L Reports (Realized & Unrealized)",
+      "Settlement Reports",
+      "Operational Reports (Exceptions, Failures)",
+      "Cashflow Reporting",
+      "Cross-System Data Alignment",
+      "ETRM Output Validation"
+    ],
+    "testingAndProductionSupport": [
+      "SIT & UAT",
+      "Sanity & Functional Testing",
+      "API Testing (SoapUI)",
+      "Integration Testing",
+      "Data Validation",
+      "SQL Root Cause Analysis",
+      "Incident Investigation",
+      "End-to-End Process Validation"
+    ]
+  },
+  "education": [
+    {
+      "degree": "MBA — Business Analytics",
+      "institution": "DY Patil University",
+      "period": "July 2022 – May 2024"
+    },
+    {
+      "degree": "BCA — Information Technology",
+      "institution": "Sahyog College of Management Studies, Mumbai",
+      "period": "2018 – 2021"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Strategy Consulting",
+      "issuer": "Accenture Australia",
+      "category": "Consulting"
+    },
+    {
+      "name": "Project Manager Job Simulation",
+      "issuer": "Siemens Mobility",
+      "category": "Project Management"
+    },
+    {
+      "name": "Client Service Job Simulation",
+      "issuer": "Bloomberg",
+      "category": "Finance"
+    },
+    {
+      "name": "Strategy Consulting",
+      "issuer": "BCG",
+      "category": "Consulting"
+    },
+    {
+      "name": "MySQL Certification",
+      "issuer": "MySQL",
+      "category": "Data"
+    }
+  ],
+  "targetRoles": [
+    "ETRM Consultant",
+    "Energy Trading Business Analyst",
+    "ETRM Functional Consultant",
+    "Energy Trading & Risk Consultant",
+    "Trade Lifecycle / Settlement Consultant"
+  ]
+}

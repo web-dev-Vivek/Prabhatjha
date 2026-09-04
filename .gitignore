@@ -1,0 +1,12 @@
+# Environment Variables & Secrets (Ignored by Git)
+.env
+.env.*
+env.js
+config.local.js
+
+# OS & IDE Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
